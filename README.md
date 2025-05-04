@@ -1,13 +1,12 @@
 # Ewaste-Net: Structured OCR Pipeline for Electronic Waste Recognition
 
+
+![image](https://github.com/user-attachments/assets/e98c2ae1-0d0e-4b56-a2eb-5ab5e0f74178)
+
 **Authors**: Robert Ke, Rong Gu, Yijun Sun, Shengjie Wang, Yuyang Wang  
 **Sponsor**: D3 Embedded  
 **Course**: Capstone 383W  
 **Supervisor**: Prof. Cantay Caliskan  
-
-![image](https://github.com/user-attachments/assets/e98c2ae1-0d0e-4b56-a2eb-5ab5e0f74178)
-
-
 ---
 
 ##  Project Overview
