@@ -107,7 +107,7 @@ This dataset serves as the reference for model benchmarking and ablation compari
 
 These metrics quantify the fidelity of transcription against ground truth labels across 1,600+ device samples. Preliminary results show a **WER below 1.1** on average, with strong performance even in noisy and low-resolution conditions.
 
-### ⚙Highlights
+##Highlights
 
 - **Model**: Qwen2.5-VL-3B-Instruct (efficient multilingual vision-language model)
 - **Input**: Cropped images from Stage I (`*.jpg`, `*.png`)
