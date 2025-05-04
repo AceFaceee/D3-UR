@@ -11,6 +11,8 @@
 
 **Ewaste-Net** is an end-to-end, modular deep learning system designed to extract and structure information from photographs of discarded electronics. The pipeline is tailored for real-world recycling facility use and is optimized for robustness, speed, and precision across diverse conditions.
 
+![image](https://github.com/user-attachments/assets/21403d17-f9c3-49f8-a284-1ee791e3811c)
+
 ---
 
 ##  Pipeline Summary
