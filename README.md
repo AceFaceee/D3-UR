@@ -43,7 +43,7 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
 
 > ⚠ This script was designed for a Colab workflow but is easily adaptable for local or cloud execution. It requires access to Roboflow API and an Inference server (local or hosted).
 
-### 📊 Datasets Used
+### Datasets Used
 
 - **TextOBB-1681**  
   A curated dataset with 1,681 rotated bounding box (OBB) labels targeting embedded text on devices.  
