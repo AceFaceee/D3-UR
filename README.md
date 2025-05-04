@@ -7,13 +7,13 @@
 
 ---
 
-## 🔗 Project Overview
+##  Project Overview
 
 **Ewaste-Net** is an end-to-end, modular deep learning system designed to extract and structure information from photographs of discarded electronics. The pipeline is tailored for real-world recycling facility use and is optimized for robustness, speed, and precision across diverse conditions.
 
 ---
 
-## 🔄 Pipeline Summary
+##  Pipeline Summary
 
 The pipeline consists of three tightly coupled stages:
 
@@ -29,7 +29,7 @@ Continue below for detailed descriptions of each stage.
 
 
 
-## 🚀 Stage I: Customized Text-Oriented Bounded Box Detection
+## Stage I: Customized Text-Oriented Bounded Box Detection
 
 The first stage of **Ewaste-Net** focuses on localizing embedded textual information on discarded electronics using a YOLOv8-based object detection framework. This stage is implemented in [`ewaste_net.py`](./ewaste_net.py).
 
@@ -41,7 +41,7 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
   - Inference on local or cloud images
   - Cropping and saving detected text regions for OCR processing
 
-> ⚠️ This script was designed for a Colab workflow but is easily adaptable for local or cloud execution. It requires access to Roboflow API and an Inference server (local or hosted).
+> ⚠ This script was designed for a Colab workflow but is easily adaptable for local or cloud execution. It requires access to Roboflow API and an Inference server (local or hosted).
 
 ### 📊 Datasets Used
 
@@ -57,7 +57,7 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
   Real-world device images collected from recycling facilities (courtesy of D3).  
   👉 [Preprocessing & Cropping](https://app.roboflow.com/d3ewastedataset/d3-ewaste-dataset/generate/preprocessing)
 
-### ⚙️ Features
+### Features
 
 - **Model**: YOLOv8 (Roboflow 3.0) with rotation-sensitive bounding boxes
 - **Augmentations**:
@@ -70,11 +70,11 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
 
 This bounding box localization module drastically reduces image complexity for downstream text recognition, enabling faster and more accurate results.
 
-## 🧠 Stage II: Optical Character Recognition (OCR) with Qwen 3B
+## Stage II: Optical Character Recognition (OCR) with Qwen 3B
 
 After text regions are localized and cropped in Stage I, they are passed into a lightweight vision-language OCR module powered by **Qwen 3B**. This step transcribes raw pixel regions into clean, machine-readable strings containing product names, model numbers, and serial codes.
 
-### 📂 Code Location
+### Code Location
 
 - [`qwenocr_2.py`](./qwenocr_2.py): Inference script using `Qwen2.5-VL-3B-Instruct` from HuggingFace.
   - Loads the pre-trained Qwen model and processor
@@ -87,7 +87,7 @@ After text regions are localized and cropped in Stage I, they are passed into a 
 > pip install qwen-vl-utils
 > ```
 
-### 📑 Ground Truth for Evaluation
+### Ground Truth for Evaluation
 
 - [`Qwen3b_GT.csv`](./Qwen3b_GT.csv):  
   This CSV contains human-labeled ground truth text for each cropped image. It is used to compute character-level and word-level benchmarking metrics:
@@ -97,7 +97,7 @@ After text regions are localized and cropped in Stage I, they are passed into a 
 
 This dataset serves as the reference for model benchmarking and ablation comparisons.
 
-### 📏 Evaluation Metrics
+### Evaluation Metrics
 
 - [`Evaluation_method.py`](./Evaluation_method.py):  
   Custom metric functions to benchmark OCR output:
@@ -107,7 +107,7 @@ This dataset serves as the reference for model benchmarking and ablation compari
 
 These metrics quantify the fidelity of transcription against ground truth labels across 1,600+ device samples. Preliminary results show a **WER below 1.1** on average, with strong performance even in noisy and low-resolution conditions.
 
-### ⚙️ Highlights
+### ⚙Highlights
 
 - **Model**: Qwen2.5-VL-3B-Instruct (efficient multilingual vision-language model)
 - **Input**: Cropped images from Stage I (`*.jpg`, `*.png`)
@@ -118,7 +118,7 @@ These metrics quantify the fidelity of transcription against ground truth labels
 
 ---
 
-## 🧪 Experiment 2: OCR Benchmarking Trials
+## Experiment 2: OCR Benchmarking Trials
 
 The `Experiment_2/` folder contains additional OCR benchmarking experiments used during the model selection phase for Stage II.
 
@@ -126,7 +126,7 @@ The `Experiment_2/` folder contains additional OCR benchmarking experiments used
 - Each model was evaluated on the same set of cropped inputs for comparative CER/WER performance
 - Final selection of **Qwen2.5-VL-3B** was based on empirical accuracy, inference time, and robustness to non-standard fonts
 
-> 🔁 Every code module in this repository is provided in both `.py` and `.ipynb` formats to support both script-based execution and interactive development.
+ Every code module in this repository is provided in both `.py` and `.ipynb` formats to support both script-based execution and interactive development.
 
 These experiments validate the architectural choices and serve as reproducible baselines for future work or ablation studies.
 
