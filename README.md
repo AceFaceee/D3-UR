@@ -4,7 +4,7 @@
 ---
 ![image](https://github.com/user-attachments/assets/e98c2ae1-0d0e-4b56-a2eb-5ab5e0f74178)
 
-**Authors**: Robert Ke, Rong Gu, Yijun Sun, Shengjie Wang, Yuyang Wang  
+**Authors**: Robert Ke, Rong Gu, Yijun Sun, Shengjie Wang, Yuyang Wang
 **Sponsor**: D3 Embedded  
 **Course**: Capstone 383W  
 **Supervisor**: Prof. Cantay Caliskan  
@@ -38,7 +38,7 @@ Continue below for detailed descriptions of each stage.
 
 The first stage of **Ewaste-Net** focuses on localizing embedded textual information on discarded electronics using a YOLOv8-based object detection framework. This stage is implemented in [`ewaste_net.py`](./ewaste_net.py).
 
-### 📂 Code Location
+### Code Location
 
 - [`ewaste_net.py`](./ewaste_net.py): Contains the full workflow for training and deploying a YOLOv8 OBB (oriented bounding box) model on Roboflow. It also includes:
   - Setup and environment configuration (via Google Colab or local scripts)
@@ -72,6 +72,24 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
 - **Output**:
   - Cropped text images extracted from device photos
   - Optimized for OCR (Stage II)
+
+###  Usage Instructions for `ewaste_net.py`
+
+This script implements the complete **Stage I** of the Ewaste-Net pipeline:
+1. Connecting to Roboflow
+2. Running a trained YOLOv8 model via a hosted inference API
+3. Visualizing and cropping detected bounding boxes from e-waste images
+
+#### Dependencies
+
+Install the required packages:
+
+```bash
+pip install ultralytics roboflow supervision
+pip install inference-cli
+inference server start
+```
+
 
 This bounding box localization module drastically reduces image complexity for downstream text recognition, enabling faster and more accurate results.
 
