@@ -5,6 +5,9 @@
 **Course**: Capstone 383W  
 **Supervisor**: Prof. Cantay Caliskan  
 
+![image](https://github.com/user-attachments/assets/e98c2ae1-0d0e-4b56-a2eb-5ab5e0f74178)
+
+
 ---
 
 ##  Project Overview
