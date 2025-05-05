@@ -1,20 +1,15 @@
 # Ewaste-Net: Structured OCR Pipeline for Electronic Waste Recognition
 
-
----
-![image](https://github.com/user-attachments/assets/e98c2ae1-0d0e-4b56-a2eb-5ab5e0f74178)
-
-**Authors**: Robert Ke, Rong Gu, Yijun Sun, Shengjie Wang, Yuyang Wang
+**Authors**: Robert Ke, Rong Gu, Yijun Sun, Shengjie Wang, Yuyang Wang  
 **Sponsor**: D3 Embedded  
 **Course**: Capstone 383W  
 **Supervisor**: Prof. Cantay Caliskan  
+
 ---
 
 ##  Project Overview
 
 **Ewaste-Net** is an end-to-end, modular deep learning system designed to extract and structure information from photographs of discarded electronics. The pipeline is tailored for real-world recycling facility use and is optimized for robustness, speed, and precision across diverse conditions.
-
-![image](https://github.com/user-attachments/assets/21403d17-f9c3-49f8-a284-1ee791e3811c)
 
 ---
 
@@ -38,7 +33,7 @@ Continue below for detailed descriptions of each stage.
 
 The first stage of **Ewaste-Net** focuses on localizing embedded textual information on discarded electronics using a YOLOv8-based object detection framework. This stage is implemented in [`ewaste_net.py`](./ewaste_net.py).
 
-### Code Location
+### 📂 Code Location
 
 - [`ewaste_net.py`](./ewaste_net.py): Contains the full workflow for training and deploying a YOLOv8 OBB (oriented bounding box) model on Roboflow. It also includes:
   - Setup and environment configuration (via Google Colab or local scripts)
@@ -73,24 +68,6 @@ The first stage of **Ewaste-Net** focuses on localizing embedded textual informa
   - Cropped text images extracted from device photos
   - Optimized for OCR (Stage II)
 
-###  Usage Instructions for `ewaste_net.py`
-
-This script implements the complete **Stage I** of the Ewaste-Net pipeline:
-1. Connecting to Roboflow
-2. Running a trained YOLOv8 model via a hosted inference API
-3. Visualizing and cropping detected bounding boxes from e-waste images
-
-#### Dependencies
-
-Install the required packages:
-
-```bash
-pip install ultralytics roboflow supervision
-pip install inference-cli
-inference server start
-```
-
-
 This bounding box localization module drastically reduces image complexity for downstream text recognition, enabling faster and more accurate results.
 
 ## Stage II: Optical Character Recognition (OCR) with Qwen 3B
@@ -104,7 +81,7 @@ After text regions are localized and cropped in Stage I, they are passed into a 
   - Performs inference on cropped images in batch
   - Saves predictions to `ocr_results.csv`
 
-> 💡 Note: Make sure to install the required packages:
+> Note: Make sure to install the required packages:
 > ```bash
 > pip install git+https://github.com/huggingface/transformers
 > pip install qwen-vl-utils
@@ -130,7 +107,7 @@ This dataset serves as the reference for model benchmarking and ablation compari
 
 These metrics quantify the fidelity of transcription against ground truth labels across 1,600+ device samples. Preliminary results show a **WER below 1.1** on average, with strong performance even in noisy and low-resolution conditions.
 
-##Highlights
+### ⚙Highlights
 
 - **Model**: Qwen2.5-VL-3B-Instruct (efficient multilingual vision-language model)
 - **Input**: Cropped images from Stage I (`*.jpg`, `*.png`)
@@ -148,6 +125,29 @@ The `Experiment_2/` folder contains additional OCR benchmarking experiments used
 - Models trialed include: Tesseract, EasyOCR, Keras-OCR, and Doctr
 - Each model was evaluated on the same set of cropped inputs for comparative CER/WER performance
 - Final selection of **Qwen2.5-VL-3B** was based on empirical accuracy, inference time, and robustness to non-standard fonts
+
+# OCR Benchmarking: KerasOCR vs. Doctr
+
+This project benchmarks two OCR frameworks — **KerasOCR** and **Doctr** — to evaluate their effectiveness in recognizing text from images, especially in challenging scenarios like e-waste labeling or low-quality image inputs.
+
+## Code Overview
+
+- **`kerasocr_benchmark_trial.py`**  
+  Uses the `keras-ocr` pipeline for text detection and recognition. It processes a batch of images and returns bounding boxes with recognized text.
+
+- **`doctr_benchmark_trial_ipynb.py`**  
+  Utilizes the `doctr` library (Document Transformers) for end-to-end OCR, including detection and recognition. This script is structured similarly but uses transformer-based models.
+
+Each script is intended to run independently on the same dataset to allow side-by-side comparison.
+
+## Requirements
+
+Install the necessary dependencies with:
+
+```bash
+pip install keras-ocr doctr torchvision opencv-python matplotlib numpy
+```
+
 
  Every code module in this repository is provided in both `.py` and `.ipynb` formats to support both script-based execution and interactive development.
 
