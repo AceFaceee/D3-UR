@@ -4,6 +4,7 @@
 **Sponsor**: D3 Embedded  
 **Course**: Capstone 383W  
 **Supervisor**: Prof. Cantay Caliskan  
+![4618-GIDS-Wordmark-V1-FINAL (1)](https://github.com/user-attachments/assets/026913f2-d868-4f06-860f-f378403ceb62)
 
 ---
 
