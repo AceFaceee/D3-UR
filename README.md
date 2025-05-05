@@ -17,6 +17,8 @@
 ##  Pipeline Summary
 
 The pipeline consists of three tightly coupled stages:
+![image](https://github.com/user-attachments/assets/8cac4a77-af76-45fc-975d-7a190c38b3af)
+
 
 1. **Stage I — Text Region Detection**  
    Uses a YOLOv8-based object detector trained on rotated bounding boxes (OBB) to localize small and angled text (e.g., serial numbers, model tags) in cluttered device images.
